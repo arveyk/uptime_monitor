@@ -4,9 +4,9 @@ on:
   push:
     branches: [ "main" ]
 
-permissions:
-  id-token: write   # This is required for OIDC authentication
-  contents: read    # This is required to checkout the repository
+#permissions:
+#  id-token: write   # This is required for OIDC authentication
+#  contents: read    # This is required to checkout the repository
 
 jobs:
   deploy:
@@ -18,11 +18,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v5
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-        aws-region: us-east-1
+    #- name: Configure AWS credentials
+    #  uses: aws-actions/configure-aws-credentials@v4
+    #  with:
+    #    role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+    #    aws-region: us-east-1
         # The role-to-assume should be the ARN of the IAM role you created for GitHub Actions OIDC
 
     - name: Deploy Lambda Function
@@ -33,3 +33,7 @@ jobs:
         handler: monitor.notionNotificationMonitor
         runtime: nodejs22.x
         # Add any additional inputs this action supports
+    - name: npm install
+      env:
+        CI: true
+      run: npm ci
