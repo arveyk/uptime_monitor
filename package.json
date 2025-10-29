@@ -1,0 +1,21 @@
+{
+  "name": "uptime_monitor",
+  "version": "1.0.0",
+  "description": "Check if Notion Notification is active",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "imap": "^0.8.17",
+    "ts": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.157",
+    "@types/node": "^24.9.2"
+  }
+}
